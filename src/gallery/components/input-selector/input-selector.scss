@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+.input-selector_style {
+    width: 100%;
+    height: 50px;
+    padding: 0 2px 0 2px;
+}
+.input-selector__form_style {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.input-selector__file_style{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #dfdfdf;
+
+    span {
+        position: absolute;
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+    }
+
+    input {
+        visibility: hidden;
+    }
+}
+
+
+.input-selector__text_style {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    display: flex;
+    align-items: center;
+
+}
+.input-selector__text-value_style {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #dfdfdf;
+    outline: none;
+    padding: 0 3% 0 3%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+}
+
+.input-selector__text-value_style:focus {
+    border: 2px solid #dfdfdf;
+    animation-name: animateBorder;
+    animation-duration: 4s;
+}
+.input-selector__text-value_style::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+
+}
+.input-selector__button_style {
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-top: 2px solid #dfdfdf;
+    border-bottom: 2px solid #dfdfdf;
+    border-right: 2px solid #dfdfdf;
+    background: #ffffff;
+
+    span {
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+    }
+
+    span:hover {
+        color: #000000;
+        animation-name: animateButton;
+        animation-duration: 5s;
+    }
+}
+
+.input-selector__button_style:active {
+    animation-name: animateColor;
+    animation-duration: 5s;
+}
+.input-selector__select_style {
+    height: 100%;
+    border-top: 2px solid #dfdfdf;
+    border-right: 2px solid #dfdfdf;
+    border-bottom: 2px solid #dfdfdf;
+}
+.input-selector__select-value_style {
+    border: none;
+    outline: none;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+}
+
+.input-selector__select-value_style:hover {
+    color: #000000;
+    animation-name: animateButton;
+    animation-duration: 5s;
+
+    option {
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+    }
+}
+
+@keyframes animateButton {
+    0%   {color: #000000}
+    25% {color: #71ccd5}
+    50% {color: #71ccd5}
+    75% {color: #71ccd5}
+    100% {color: #71ccd5}
+}
+
+@keyframes animateColor {
+    0%   {background: #ffffff}
+    25% {background: #71ccd5}
+    50% {background: #71ccd5}
+    75% {background: #71ccd5}
+    100% {background: #71ccd5}
+}
+
+
+

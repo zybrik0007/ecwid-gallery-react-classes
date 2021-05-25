@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+.photo_style{
+    position: relative;
+    flex: auto;
+    margin: .5vw;
+}
+.photo__img_style{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo__info_style {
+    top: 2%;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.photo__info-wrapper_style {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo__info-id_style {
+    opacity: .1;
+
+}
+
+.photo__info-buttons_style {
+    display: flex;
+    justify-content: space-between;
+    padding-right: .10vw;
+
+    div {
+        margin-right: .5vw;
+    }
+}
+
+
+.photo__info-id_style:hover {
+    opacity: 0.5;
+    color: #001F3F;
+    animation-name: animate;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+.photo__button-zoom-plus_style {
+    opacity: 0.3;
+
+    a {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        text-decoration: none;
+        color: #001F3F;
+    }
+
+    a:hover {
+        text-decoration: none;
+        opacity: 1;
+        color: #001F3F;
+        animation-name: animate;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+    }
+}
+
+
+.photo__button-delete_style {
+    opacity: .3;
+}
+
+.photo__button-delete_style:hover {
+    opacity: 1;
+    color: #001F3F;
+    animation-name: animate;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes animate {
+    0%   {color: black;}
+    20% {color: red;}
+    40% {color: blue;}
+    60% {color: yellow;}
+    80% {color: green;}
+    100% {color: plum}
+}

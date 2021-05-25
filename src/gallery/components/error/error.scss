@@ -1,0 +1,48 @@
+.error_style {
+    width: 100%;
+    height: 150px;
+    margin: 10px 0 10px 0;
+    padding: 0 2px 0 2px;
+
+    .error__wrapper_style {
+        background: rgba(249, 208, 208, 0.5);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .error__wrapper_style:hover {
+        background: rgba(249, 208, 208, 0.5);
+        animation-name: errors;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+
+    .error__button-close_style {
+        width: 95%;
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        opacity: 0.2;
+    }
+
+    .error__button-close_style>span:hover {
+        color: darkred;
+        opacity: 10;
+    }
+}
+
+.error__text_style {
+    width: 95%;
+    height: 100%;
+    opacity: 0.4;
+    padding-bottom: 5px;
+}
+
+@keyframes errors {
+    from   {background: rgba(249, 208, 208, 0.5);}
+    to {background:  rgba(232, 62, 62, 0.5);}
+}
