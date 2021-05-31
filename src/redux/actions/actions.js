@@ -35,9 +35,9 @@ export function getGallery(event) {
                 }
             }
             setTimeout(() =>{
-                dispatchGetGalley(hideLoader())
+                dispatchGetGalley(dispatchGetGalley(hideLoader()))
                 document.body.style.overflow = 'auto'
-            }, 1000)
+            }, 2000)
             setTimeout(() => {
                 dispatchGetGalley({type: ERROR_HIDE})
             }, 10000)
@@ -47,7 +47,7 @@ export function getGallery(event) {
                 dispatchGetGalley(hideLoader())
                 document.body.style.overflow = 'auto'
                 dispatchGetGalley({type: GET_PHOTOS, payload: response.data.photos})
-            }, 1000)
+            }, 2000)
         }
     }
 }
@@ -120,12 +120,12 @@ export function putJsonPhoto(event) {
                         dispatchPutGallery({type: ERROR_SHOW, payload: response.response.data.error})
                     }
                 }
-                dispatchPutGallery(getGallery(50))
+                dispatchPutGallery(getGallery(50), getCountPhotosGallery())
                 setTimeout(() => {
                     dispatchPutGallery({type: ERROR_HIDE})
                 }, 10000)
             } else {
-                dispatchPutGallery(getGallery(50))
+                dispatchPutGallery(getGallery(50), getCountPhotosGallery())
             }
         }
         setTimeout(()=> {
@@ -159,22 +159,24 @@ export function getPhotoId(event) {
                     dispatchGetPhotoId({type: GET_PHOTO_ID, payload: []})
                 }
             }
-        setTimeout(() => {dispatchGetPhotoId(hideLoader())}, 1000)}
+            setTimeout(() => {dispatchGetPhotoId(hideLoader())}, 1000)}
     }
 }
 
 /*Удаление изображения*/
 export function deletePhoto(event) {
-    console.log('delete action 1', event);
     return async dispatchDeletePhoto => {
-        console.log('delete action 2', event);
         dispatchDeletePhoto(showLoader())
         const response = await deletePhotoGallery(event)
         if (response instanceof Error) {
             if(!(response.response)) {
                 dispatchDeletePhoto({type: ERROR_SHOW, payload: 'Ошибка связи с сервером'})
             } else {
-                dispatchDeletePhoto({type: ERROR_SHOW, payload: 'Неизвестная ошибка сервера'})
+                if(!(response.response.data.error)) {
+                    dispatchDeletePhoto({type: ERROR_SHOW, payload: 'Неизвестная ошибка сервера'})
+                } else {
+                    dispatchDeletePhoto({type: ERROR_SHOW, payload: response.response.data.error})
+                }
             }
             dispatchDeletePhoto(hideLoader())
             setTimeout(() => {dispatchDeletePhoto({type: ERROR_HIDE})}, 10000)
@@ -183,7 +185,8 @@ export function deletePhoto(event) {
         } else {
             setTimeout(() => {
                 dispatchDeletePhoto(hideLoader())
-                dispatchDeletePhoto({type: DELETE_PHOTO_ID, payload: event})}, 1000)
+                dispatchDeletePhoto({type: DELETE_PHOTO_ID, payload: event})
+            }, 1000)
         }
     }
 }
@@ -220,9 +223,8 @@ export function hideError() {
 /*Получение изображения по ID c сервера для страницы /photo:id*/
 export function getPhotoIdPage(event) {
     return async dispatchGetPhotoIdPage => {
-        console.log('event', event)
-        if (!event.trim() || event === undefined) {
-            dispatchGetPhotoIdPage({type: GET_PHOTO_ID_PAGE, payload: null})
+        if (!event.trim()) {
+            dispatchGetPhotoIdPage(getGallery(50))
         } else {
             dispatchGetPhotoIdPage(showLoader())
             const response = await getPhotoIdGallery(event)
@@ -236,8 +238,8 @@ export function getPhotoIdPage(event) {
                 dispatchGetPhotoIdPage({type: GET_PHOTO_ID_PAGE, payload: response.data.search})
                 dispatchGetPhotoIdPage({type: GET_PHOTOS, payload: []})
             }
+            setTimeout(() => {dispatchGetPhotoIdPage(hideLoader())}, 1000)
         }
-
     }
 }
 
@@ -265,7 +267,7 @@ export function putUrlPhoto(event) {
                     dispatchPutUrlPhoto(hideLoader())
                 }, 2000)
             } else {
-                dispatchPutUrlPhoto(getGallery(50))
+                dispatchPutUrlPhoto(getGallery(50), getCountPhotosGallery())
                 setTimeout(()=> {
                     dispatchPutUrlPhoto(hideLoader())
                 }, 2000)

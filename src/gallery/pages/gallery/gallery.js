@@ -16,6 +16,8 @@ import Loader from '../../components/loader/loader';
 import Error from '../../components/error/error';
 import Input from '../../components/input/input';
 import {connect} from 'react-redux';
+import {inputDisplay} from "../../components/input-selector/functions/functions";
+
 
 class Gallery extends React.Component{
 
@@ -71,6 +73,9 @@ class Gallery extends React.Component{
         }
         this.size()
         window.addEventListener('resize', this.size);
+        inputDisplay(document.getElementsByClassName('input-selector__select-input'),
+            document.getElementsByClassName('input-selector__select-button'),
+            document.querySelector('.input-selector__select-value').value)
     }
 
     componentWillUnmount() {
@@ -107,7 +112,7 @@ class Gallery extends React.Component{
                 <div className={'gallery-input-area gallery-input-area_style'}>
                     <div className={'gallery-input-area__wrapper gallery-input-area__wrapper_style'}>
                         <Input state={{placeholder: 'Search ID', type: 'number', keyUpFunction: (event) => this.props.getPhotoId(event)}}/>
-                        <InputSelector objSelectorInput={this.obj}/>
+                        <InputSelector obj={this.obj}/>
                         {this.state.error && <Error text={this.state.errorText}/>}
                     </div>
                 </div>

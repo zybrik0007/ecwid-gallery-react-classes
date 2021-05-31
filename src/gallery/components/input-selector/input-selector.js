@@ -17,15 +17,7 @@ function_submit - функция вызываемя при сабмите акт
 
 Массив arrOption задает value и имя option в select, должны быть аналогично data_name inputs.
 */
-function InputSelector({objSelectorInput}) {
-    const [obj] = useState(objSelectorInput)
-
-    useEffect(() => {
-        inputDisplay(document.getElementsByClassName('input-selector__select-input'),
-            document.getElementsByClassName('input-selector__select-button'),
-            document.querySelector('.input-selector__select-value').value)
-    }, []);
-
+function InputSelector({obj}) {
     return(
         <div className={'input-selector input-selector_style'}>
             <form className={'input-selector__form input-selector__form_style'}>

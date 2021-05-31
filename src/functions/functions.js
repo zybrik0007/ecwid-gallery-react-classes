@@ -4,7 +4,7 @@ import {server} from '../server/server';
 /*Запрос к серверу на получение изображений*/
 export async function getPhotosGallery (event) {
     try {
-        return await axios.get(server, {params: {count: event}})
+        return await axios.get(server + '/get', {params: {count: event}})
     } catch (err) {
         return err
     }
@@ -13,7 +13,7 @@ export async function getPhotosGallery (event) {
 /*Запрос к серверу на получение общего количества изображений*/
 export async function getCountPhotosGallery() {
     try {
-        return await axios.get(server + '/image/count')
+        return await axios.get(server + '/get/image/count')
     } catch (err) {
         return err
     }
@@ -35,7 +35,7 @@ export async function putJsonGallery(event) {
 /*Запрос к серверу на получение изображния по ID*/
 export async function getPhotoIdGallery(event) {
     try {
-        return await axios.get(server + '/image/id', {params: {id: event}})
+        return await axios.get(server + '/get/image/id', {params: {id: event}})
     } catch (err) {
         return err
     }
@@ -44,7 +44,7 @@ export async function getPhotoIdGallery(event) {
 /*Запрос к серверу на удаление изображения по ID*/
 export async function deletePhotoGallery(event) {
     try {
-        return await axios.delete(server + '/image', {data: {id: event}})
+        return await axios.delete(server + '/delete', {data: {id: event}})
     } catch (err) {
         return err
     }
@@ -54,7 +54,7 @@ export async function deletePhotoGallery(event) {
 export async function putImageGallery(event) {
     try {
         const req = {request: event}
-        return await axios.put(server + '/image', req);
+        return await axios.put(server + '/put', req);
     } catch (err) {
         return err;
     }
