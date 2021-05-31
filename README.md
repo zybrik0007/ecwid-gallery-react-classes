@@ -1,3 +1,5 @@
+### Демонстрациннвя ссылка: http://45.141.79.217:4000/gallery
+
 # Тестовое задание компанни Ecwid.
 ##### Задание: сделать галлерею.
 ##### Ссылка на задание https://docs.google.com/document/d/1jVU6m5qKcgXpSd0jCawymUqeqc2D3x-hD22bKzhLOzc/edit
